@@ -60,7 +60,7 @@ Item {
                     width: 75
                     height: 75
                     asynchronous: true
-                    source: thumbImage == "" ? "images/album.png" : thumbImage
+                    source: album.thumbImage == "" ? "images/album.png" : album.thumbImage
                 }
 
                 Column {
@@ -68,7 +68,7 @@ Item {
 
                         Text {
                             id: titleItem
-                            text: title
+                            text: album.title
                             font.bold: true
                         }
                         spacing: 20
@@ -77,15 +77,15 @@ Item {
                     Row {
                         Text {
                             id: categoryItem
-                            text: category
+                            text: album.category
                         }
                         Text {
                             id: subcategoryItem
-                            text: subcategory
+                            text: album.subcategory
                         }
                         Text {
                             id: imageCountItem
-                            text: imageCount == -1 ? "?" : imageCount
+                            text: album.imageCount == -1 ? "?" : album.imageCount
                         }
                         //layoutDirection: Qt.RightToLeft
                         spacing: 20

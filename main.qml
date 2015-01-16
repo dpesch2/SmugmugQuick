@@ -60,19 +60,7 @@ ApplicationWindow {
         id: model
 
         onAlbumsLoaded: {
-            Util.fillListViewModel(mainForm.listView.model, model.albums, Util.albumToListItem)
-        }
-
-        onAlbumThumbImageLoaded: {
-            console.log("onAlbumThumbImageLoaded");
-            //Util.updateThumbImage(mainForm.listView.model, albumId, filename)
-            Util.updateListViewModelItemProperty(mainForm.listView.model, albumId, "thumbImage", filename,
-                                                     function (val) { return "file://" + val })
-        }
-
-        onAlbumImageCountLoaded: {
-            console.log("onAlbumImageCountLoaded");
-            Util.updateListViewModelItemProperty(mainForm.listView.model, albumId, "imageCount", imageCount)
+            Util.fillListViewModel(mainForm.listView.model, model.albums, function(album) { return {"album": album } })
         }
 
         onImageLoaded: {

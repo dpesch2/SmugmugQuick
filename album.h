@@ -17,10 +17,10 @@ public:
     Album(QString, QString, QString, QSharedPointer<Category>, QSharedPointer<Category>, QObject* parent);
     ~Album();
 
-    Q_PROPERTY(QString id READ getId);
-    Q_PROPERTY(QString title READ getTitle);
-    Q_PROPERTY(QString category READ getCategoryName);
-    Q_PROPERTY(QString subcategory READ getSubcategoryName);
+    Q_PROPERTY(QString id READ getId NOTIFY idChanged);
+    Q_PROPERTY(QString title READ getTitle NOTIFY titleChanged);
+    Q_PROPERTY(QString category READ getCategoryName NOTIFY categoryNameChanged);
+    Q_PROPERTY(QString subcategory READ getSubcategoryName NOTIFY subcategoryNameChanged);
 
     Q_PROPERTY(QString thumbImage READ getThumbImage NOTIFY thumbImageChanged);
     Q_PROPERTY(int imageCount READ getImageCount NOTIFY imageCountChanged);
@@ -36,6 +36,14 @@ public:
     int getImageCount() const { return m_imageCount; }
     uint getLoadedImageCount() const { return m_images.size(); }
 
+    // unused signals
+    Q_SIGNAL void idChanged();
+    Q_SIGNAL void titleChanged();
+    Q_SIGNAL void categoryNameChanged();
+    Q_SIGNAL void subcategoryNameChanged();
+
+
+    // used signals
     Q_SIGNAL void imageCountChanged();
     Q_SIGNAL void thumbImageChanged();
 

@@ -2,7 +2,8 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>MainForm.ui.qml</file>
-	<file>util.js</file>
-	<file>images/album.png</file>
+        <file>util.js</file>
+        <file>images/album.png</file>
+        <file>AlbumListItem.qml</file>
     </qresource>
 </RCC>

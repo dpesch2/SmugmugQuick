@@ -40,62 +40,16 @@ Item {
 
     ListView {
         id: listView1
+        clip: true
         x: 21
         y: 86
         width: 606
         height: 386
+        //highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
         model: ListModel {
         }
-        delegate: Item {
-            id: item
-            x: 5
-            width: 80
-            height:80
+        delegate: AlbumListItem {}
 
-            Row {
-                id: row1
-
-                Image {
-                    id: imageItem
-                    width: 75
-                    height: 75
-                    asynchronous: true
-                    source: album.thumbImage == "" ? "images/album.png" : album.thumbImage
-                }
-
-                Column {
-                    Row {
-
-                        Text {
-                            id: titleItem
-                            text: album.title
-                            font.bold: true
-                        }
-                        spacing: 20
-                    }
-
-                    Row {
-                        Text {
-                            id: categoryItem
-                            text: album.category
-                        }
-                        Text {
-                            id: subcategoryItem
-                            text: album.subcategory
-                        }
-                        Text {
-                            id: imageCountItem
-                            text: album.imageCount == -1 ? "?" : album.imageCount
-                        }
-                        //layoutDirection: Qt.RightToLeft
-                        spacing: 20
-                    }
-
-                    spacing: 2
-                }
-                spacing: 10
-            }
-        }
     }
 
 }

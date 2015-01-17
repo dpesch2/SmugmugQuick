@@ -43,28 +43,25 @@ public:
     Image* findImage(QString albumId, QString imageId ) const;
     void dumpShort() const;
 
-signals:
-    void usernameChanged();
-    void albumsLoaded();
-    void albumLoaded(QString id);
-    void imageLoaded( QString albumId, QString imageId, bool isThumb);
-    void albumThumbImageLoaded(QString albumId, QString filename);
-    void albumImageCountLoaded(QString albumId, int imageCount);
-    void extraImageInfoLoaded( QString albumId, QString imageId);
-    void imageSavedToShared(QString fullPath);
-    void error(QString errorMsg);
+    Q_SIGNAL void usernameChanged();
+    Q_SIGNAL void albumsLoaded();
+    Q_SIGNAL void albumLoaded(QString id);
+    Q_SIGNAL void imageLoaded( QString albumId, QString imageId, bool isThumb);
+    Q_SIGNAL void albumThumbImageLoaded(QString albumId, QString filename);
+    Q_SIGNAL void albumImageCountLoaded(QString albumId, int imageCount);
+    Q_SIGNAL void extraImageInfoLoaded( QString albumId, QString imageId);
+    Q_SIGNAL void imageSavedToShared(QString fullPath);
+    Q_SIGNAL void error(QString errorMsg);
+    Q_SIGNAL void requestImage(QString jpegUrl, QString albumID, QString imageID, bool isThumb, QString imageFullPath);
+    Q_SIGNAL void requestExtraImageInfo(QString albumId, QString imageId, QString imageKey);
 
-    void requestImage(QString jpegUrl, QString albumID, QString imageID, bool isThumb, QString imageFullPath);
-    void requestExtraImageInfo(QString albumId, QString imageId, QString imageKey);
-
-public slots:
-    void updateImage(QString albumId, QString imageId, QString assetPath, bool isThumb, QString filename);
-    void updateCategory(QString categoryId, QString name );
-    void updateSubcategory(QString categoryId, QString name );
-    void updateAlbum(QString id, QString key, QString title, QString categoryId, QString subcategoryId);
-    void updateImageInfo(QString albumId, QString imageId, ImageInfo info);
-    void updateImageExtraInfo(QString albumId, QString imageId, ExtraImageInfo info);
-    void updateAlbumImageCount(QString albumId, int imageCount);
+    Q_SLOT void updateImage(QString albumId, QString imageId, QString assetPath, bool isThumb, QString filename);
+    Q_SLOT void updateCategory(QString categoryId, QString name );
+    Q_SLOT void updateSubcategory(QString categoryId, QString name );
+    Q_SLOT void updateAlbum(QString id, QString key, QString title, QString categoryId, QString subcategoryId);
+    Q_SLOT void updateImageInfo(QString albumId, QString imageId, ImageInfo info);
+    Q_SLOT void updateImageExtraInfo(QString albumId, QString imageId, ExtraImageInfo info);
+    Q_SLOT void updateAlbumImageCount(QString albumId, int imageCount);
 
 private:
 

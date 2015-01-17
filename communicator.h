@@ -27,35 +27,32 @@ public:
     Communicator(Model* model);
     ~Communicator();
 
-// public signals
-signals:
-    void albumsLoaded();
-    void imageLoaded( QString albumId, QString imageId, QString localPath, bool isThumb, QString fullPath );
-    void imageInfoLoaded(QString albumId, QString imageId, ImageInfo info);
-    void categoryLoaded(QString categoryId, QString name);
-    void subcategoryLoaded(QString categoryId, QString name);
-    void albumLoaded(QString id, QString key, QString title, QString categoryId, QString subcategoryId);
-    void extraImageInfoLoaded( QString albumId, QString imageId, ExtraImageInfo info);
-    void imageSavedToShared( QString fullPath);
-    void albumImageCountLoaded(QString albumId, int imageCount);
-    void error( QString errorMsg);
+    Q_SIGNAL void albumsLoaded();
+    Q_SIGNAL void imageLoaded( QString albumId, QString imageId, QString localPath, bool isThumb, QString fullPath );
+    Q_SIGNAL void imageInfoLoaded(QString albumId, QString imageId, ImageInfo info);
+    Q_SIGNAL void categoryLoaded(QString categoryId, QString name);
+    Q_SIGNAL void subcategoryLoaded(QString categoryId, QString name);
+    Q_SIGNAL void albumLoaded(QString id, QString key, QString title, QString categoryId, QString subcategoryId);
+    Q_SIGNAL void extraImageInfoLoaded( QString albumId, QString imageId, ExtraImageInfo info);
+    Q_SIGNAL void imageSavedToShared( QString fullPath);
+    Q_SIGNAL void albumImageCountLoaded(QString albumId, int imageCount);
+    Q_SIGNAL void error( QString errorMsg);
 
-private slots:
-    void login();
-    void finishedSlot(QNetworkReply*);
-    void processJSONResponse(QScriptValue*, QNetworkReply*);
-    void processLoginResponse(QScriptValue*);
-    void processAlbumsResponse(QScriptValue*);
-    void processImagesResponse(QScriptValue*);
-    void processExifResponse(QScriptValue*, QNetworkReply* reply);
+private:
+    Q_SLOT void login();
+    Q_SLOT void finishedSlot(QNetworkReply*);
+    Q_SLOT void processJSONResponse(QScriptValue*, QNetworkReply*);
+    Q_SLOT void processLoginResponse(QScriptValue*);
+    Q_SLOT void processAlbumsResponse(QScriptValue*);
+    Q_SLOT void processImagesResponse(QScriptValue*);
+    Q_SLOT void processExifResponse(QScriptValue*, QNetworkReply* reply);
 
 // private signals
-signals:
-    void jsonDataReceived(QScriptValue*,QNetworkReply* reply);
-    void loginResponseReceived(QScriptValue*);
-    void albumsResponseReceived(QScriptValue*);
-    void imagesResponseReceived(QScriptValue*);
-    void exifResponseReceived(QScriptValue*,QNetworkReply* reply);
+    Q_SIGNAL void jsonDataReceived(QScriptValue*,QNetworkReply* reply);
+    Q_SIGNAL void loginResponseReceived(QScriptValue*);
+    Q_SIGNAL void albumsResponseReceived(QScriptValue*);
+    Q_SIGNAL void imagesResponseReceived(QScriptValue*);
+    Q_SIGNAL void exifResponseReceived(QScriptValue*,QNetworkReply* reply);
 
 private:
     void requestData( QString,  QString, const QMap<QString, QString>* param = NULL, const QMap<QString, QVariant> *responseProps = NULL);

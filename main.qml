@@ -81,4 +81,8 @@ ApplicationWindow {
         }
     }
 
+    onSelectedAlbumIdChanged: {
+
+    }
+
 }
